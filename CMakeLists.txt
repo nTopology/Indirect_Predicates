@@ -4,12 +4,12 @@ cmake_minimum_required(VERSION 3.10)
 project(indirectPredicates)
 
 # add the executable
-add_executable(${PROJECT_NAME} 
+add_library(${PROJECT_NAME} 
     implicit_point.cpp
     numerics.cpp
     predicates/indirect_predicates.cpp
     predicates/hand_optimized_predicates.cpp
-    test.cpp
+#    test.cpp
 )
 
 # Compiler-specific options
