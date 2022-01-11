@@ -15,12 +15,12 @@ add_executable(${PROJECT_NAME}
 # Compiler-specific options
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 # grant IEEE 754 compliance
-	target_compile_options(${PROJECT_NAME} PUBLIC -frounding-math)
+	target_compile_options(${PROJECT_NAME} PRIVATE -frounding-math)
 # use intrinsic functions (CHECK WHAT TO DO FOR GCC !!!!!!!!)
 #	target_compile_options(${PROJECT_NAME} PUBLIC "/Oi")
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 # grant IEEE 754 compliance
-	target_compile_options(${PROJECT_NAME} PUBLIC "/fp:strict")
+	target_compile_options(${PROJECT_NAME} PRIVATE "/fp:strict")
 # use intrinsic functions
 	target_compile_options(${PROJECT_NAME} PUBLIC "/Oi")
 # turn off annoying warnings
