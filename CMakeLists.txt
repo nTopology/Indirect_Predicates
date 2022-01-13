@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.10)
 project(indirectPredicates)
 
 # add the executable
-add_library(${PROJECT_NAME} 
+add_library(${PROJECT_NAME} SHARED
     implicit_point.cpp
     numerics.cpp
     predicates/indirect_predicates.cpp
@@ -30,3 +30,9 @@ endif()
 # Public include directory
 target_include_directories(${PROJECT_NAME} PUBLIC .)
 target_include_directories(${PROJECT_NAME} PUBLIC predicates)
+
+# Export interface symbols and hide internal implementation
+include(GenerateExportHeader)
+generate_export_header(${PROJECT_NAME})
+target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR})
+set_target_properties(${PROJECT_NAME} PROPERTIES CXX_VISIBILITY_PRESET hidden)
